@@ -1,0 +1,7 @@
+*.xlsx
+*.odt
+.~lock.*
+*.pdf
+venv1
+*.db
+
