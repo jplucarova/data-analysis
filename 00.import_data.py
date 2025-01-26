@@ -3,6 +3,11 @@ import sys
 import pandas as pd
 from sqlalchemy import create_engine
 
+# Check if the user provided a file path
+if len(sys.argv) < 2:
+    print("Usage: python 00.import_data.py <file_path>")
+    sys.exit(1)
+
 # Load the Excel file
 file_path = sys.argv[1]
 sheets = pd.read_excel(file_path, sheet_name=None)

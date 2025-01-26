@@ -6,7 +6,6 @@ engine = create_engine('sqlite:///data.db')
 
 # Use a connection to interact with the database
 with engine.connect() as connection:
-
     # Query 1: Count distinct IDs in data_pacienti
     query1 = text("SELECT COUNT(DISTINCT id) FROM 'data_pacienti'")
     result1 = connection.execute(query1)
@@ -19,20 +18,21 @@ with engine.connect() as connection:
     query2= text("SELECT COUNT(DISTINCT id) FROM 'data_lecba'")
     result2 = connection.execute(query2)
 
-    # Print the query results
+    # Print the result for data_lecba
     for row in result2:
         print("Různá ID v data_lecba:", row[0])
         pacients = row[0]
 
-    # Query3 : Count distinct IDs in data_pacienti
+    # Query3: Count distinct IDs in data_neutropenie
     query3 = text("SELECT COUNT(id) FROM 'data_neutropenie'")
     result3 = connection.execute(query3)
 
-    # Print the result for data_pacienti
+    # Print the result for data_neutropenie
     for row in result3:
         print("Různá ID v data_neutropenie:", row[0])
         neutr = row[0]
 
+# Calculate the incidence of neutropeny
 i = neutr / pacients
 print ("Incidence neutropenie:", i)
 i_p = i * 100
